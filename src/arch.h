@@ -34,9 +34,9 @@
  * initializer. */
 
 /* Last level cache size in KiB */
-#define ULCC_CACHE_KB				(6 * 1024/* TODO: fill here */)
+#define ULCC_CACHE_KB				(25 * 1024/* TODO: fill here */)
 /* Last level cache associativity */
-#define ULCC_CACHE_ASSOC			(48/* TODO: fill here */)
+#define ULCC_CACHE_ASSOC			(20/* TODO: fill here */)
 
 /* Number of bits for the size of a memory page: 4KiB should be pretty standard */
 #define ULCC_PAGE_BITS				12

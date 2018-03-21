@@ -1,0 +1,7 @@
+test/
+*.out
+*.o
+*.so
+*.a
+.project
+.cproject

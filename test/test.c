@@ -17,10 +17,11 @@ void *thread_test(void *param)
 	int i;
 	char *p, r;
 	struct timeval t1, t2;
-
+	printf("starting --------------- %ld\n",it);
 	if(it % 2) {
+		usleep(500);
 		gettimeofday(&t1, NULL);
-		for(i = 0; i < 3000; i++) {
+		for(i = 0; i < 13000; i++) {
 			for(p = data1_start; p < data1_end; p += 64)
 				r = *p;
 		}
@@ -30,15 +31,15 @@ void *thread_test(void *param)
 			TDIFF(t1, t2));
 	}
 	else {
-		/*gettimeofday(&t1, NULL);*/
+		gettimeofday(&t1, NULL);
 		for(i = 0; i < 3000; i++) {
 			for(p = data2_start; p < data2_end; p += 64)
 				r = *p;
 		}
-		/*gettimeofday(&t2, NULL);
+		gettimeofday(&t2, NULL);
 		printf("%s ULCC support: weak LLC locality - %.4lf s\n",
 			ulcc_enabled ? "With" : "Without",
-			TDIFF(t1, t2));*/
+			TDIFF(t1, t2));
 	}
 
 	return NULL;
@@ -66,7 +67,7 @@ int test()
 	data1_end = (char *)ULCC_ALIGN_LOWER((unsigned long)(data1 + size1));
 
 	/* Create a data region to be accessed with weak LLC locality */
-	size2 = cc_llc_size() * 2;
+	size2 = cc_llc_size() * 4;
 	data2 = malloc(size2);
 	if(!data2){
 		perror("failed to allocate memory for data2");

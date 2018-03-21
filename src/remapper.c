@@ -717,6 +717,7 @@ int cc_remap(const unsigned long *start, const unsigned long *end, const int n,
 	/* Get the number of aligned pages that need to be remapped; pages that
 	 * are already in desired region do not need to be remapped. */
 	c_pages = _pages_to_be_remapped(start, end, n, regn, do_remap);
+	printf("++++++ There are %d pages needed to be remappered+++++\n", c_pages);
 	if(c_pages < 0) {
 		_ULCC_ERROR("failed to get which pages to be remapped");
 		ret = -1;
